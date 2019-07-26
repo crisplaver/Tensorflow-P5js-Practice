@@ -34,7 +34,7 @@ function train() {
 }
 
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(400, 400);
     cols = width / resolution;
     rows = height / resolution;
 

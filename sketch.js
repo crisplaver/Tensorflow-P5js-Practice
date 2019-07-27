@@ -98,7 +98,7 @@ function setup() {
 async function train() {
     const config = {
         shuffle: true,
-        epochs: 10000,
+        epochs: 100000,
         callbacks: {
             onTrainBegin: () => console.log('training start'),
             onTrainEnd: () => console.log('training complete'),

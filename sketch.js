@@ -33,7 +33,7 @@ let resolution = 200
 
 function setup() {
     createCanvas(800, 800);
-    
+
 
     cols = width / resolution;
     rows = height / resolution;
@@ -47,7 +47,7 @@ function setup() {
 
     lossP = createP('loss');
     epochP = createP('epochP');
-    for(let v of records){
+    for (let v of records) {
         createP(v)
     }
 
@@ -90,9 +90,12 @@ function setup() {
     })
 
     train();
-    setInterval(()=>{
-        predict()
-    }, 500)
+    setInterval(() => {
+        tf.tidy(() => {
+            predict()
+
+        })
+    }, 1000)
 }
 
 async function train() {
@@ -114,7 +117,7 @@ async function train() {
 }
 
 function draw() {
-    
+    point(0, 0)
 }
 
 function predict() {
@@ -131,23 +134,24 @@ function predict() {
                 rect(resolution * j, resolution * i, resolution, resolution)
 
                 fill(255);
-                textSize(12);
+                textSize(16);
                 textAlign(CENTER, CENTER)
 
                 let arr = data[index];
-                let indexOfMax = arr.indexOf(Math.max.apply(Math, arr))
+                let max = Math.max.apply(Math, arr)
+                let indexOfMax = arr.indexOf(max)
 
                 let label = labelList[indexOfMax];
                 text(label, resolution * j, resolution * i, resolution, resolution);
 
-                textSize(10);
+                textSize(14);
                 let label2 = `[${Math.floor(color[0] * 255)} ${Math.floor(color[1] * 255)} ${Math.floor(color[2] * 255)}]`
-                text(label2, resolution * j, resolution * i, resolution, resolution+30);
+                text(label2, resolution * j, resolution * i, resolution, resolution + 30);
+                text((max * 100).toFixed(1), resolution * j, resolution * i, resolution, resolution + 60)
                 index++;
             }
         }
     }
-    xs.dispose()
 }
 
 

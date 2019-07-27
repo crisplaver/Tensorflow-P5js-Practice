@@ -3,12 +3,8 @@ let records = [
     [0, 255, 0, 'green'],
     [0, 0, 255, 'blue'],
     [255, 255, 0, 'yellow'],
-    [128, 0, 128, 'purple'],
-    [165, 42, 42, 'brown'],
-    [255, 192, 203, 'pink'],
-    [255, 165, 0, 'orange'],
-    [0, 0, 0, 'black'],
-    [255, 255, 255, 'white'],
+    [0, 255, 255, 'acua'],
+    [255, 0, 255, 'pink'],
 ];
 
 
@@ -17,12 +13,8 @@ let labelList = [
     'green',
     'blue',
     'yellow',
-    'purple',
-    'brown',
+    'acua',
     'pink',
-    'orange',
-    'black',
-    'white'
 ]
 
 let testColors = [];
@@ -101,7 +93,7 @@ function setup() {
 async function train() {
     const config = {
         shuffle: true,
-        epochs: 100000,
+        epochs: 10000,
         callbacks: {
             onTrainBegin: () => console.log('training start'),
             onTrainEnd: () => console.log('training complete'),

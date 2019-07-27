@@ -29,10 +29,10 @@ let testColors = [];
 let xs, ys, xp;
 let model;
 
-let resolution = 100
+let resolution = 200
 
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(800, 800);
     
 
     cols = width / resolution;
